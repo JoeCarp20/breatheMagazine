@@ -2,6 +2,7 @@
 // NOTES:
 // 
 // - env variables: use ".env" file and prefix values with "GATSBY"
+// - when using React context, pass in default value or buld will fail
 //
 
 require("dotenv").config({

@@ -25,10 +25,11 @@ const PlaylistGrid = () => {
 
             { playlists.map( (playlist, index) => {
 
-                let name = playlist.name || 'No Playlist Name';
-                let cover = playlist.image ? playlist.image.asset.fluid : null;
-                let description = playlist._rawDescription;
-                let { creator, spotify_id } = playlist;
+                let name = playlist ? playlist.name : 'No Playlist Name';
+                let cover = playlist ? playlist.image.asset.fluid : null;
+                let description = playlist ? playlist._rawDescription : null;
+                let creator = playlist ? playlist.creator : null
+                let spotify_id = playlist ? playlist.spotify_id : null
 
                 return <PlaylistCard
                     key={index}
@@ -67,9 +68,8 @@ const PlaylistCard = ({name, cover, description, creator, spotify_id}) => {
                     <p>A playlist by {creator ? creator.name : `an anonymous creator`}</p>
                 )}
 
-                <Link to={`/creators/${creator.slug.current}`}>By {creator.name}</Link>
-
-                <p onClick={() => setPlaylistId(spotify_id)}>Play {name}</p>
+                { creator && <Link to={`/creators/${creator.slug.current}`}>By {creator.name}</Link> }
+                { spotify_id && <p onClick={() => setPlaylistId(spotify_id)}>Play {name || 'Unnamed Playlist'}</p> }
 
             </div>
 

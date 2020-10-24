@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 
-const PlaylistContext = React.createContext();
+// utils
+import { dummyContextFunction } from '../utils/common';
+
+const PlaylistContext = React.createContext({
+    playlistId: dummyContextFunction(''), 
+    setPlaylistId: dummyContextFunction,
+    loading: dummyContextFunction(false),
+    setLoading: dummyContextFunction
+});
 
 const PlaylistProvider = ({children}) => {
 

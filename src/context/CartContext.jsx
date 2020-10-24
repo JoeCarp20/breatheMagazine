@@ -1,5 +1,8 @@
 import React, { useReducer } from 'react';
 
+// utils
+import { dummyContextFunction } from '../utils/common';
+
 const cartReducer = (state, action) => {
   switch(action.type) {
         
@@ -44,7 +47,15 @@ const cartReducer = (state, action) => {
 
 }
 
-const CartContext = React.createContext();
+const CartContext = React.createContext({
+  addItem: dummyContextFunction,
+  removeItem: dummyContextFunction,
+  updateItem: dummyContextFunction,
+  incrementItem: dummyContextFunction,
+  getCart: () => dummyContextFunction([]),
+  clearCart: dummyContextFunction,
+  loadCart: dummyContextFunction
+});
 
 const CartProvider = ({children}) => {
 
