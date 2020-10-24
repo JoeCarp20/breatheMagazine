@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 
 // components
 import Image from 'gatsby-image';
