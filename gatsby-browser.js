@@ -8,7 +8,7 @@ import { CartProvider } from "./src/context/CartContext";
 // utils
 import { PlaylistProvider } from "./src/context/PlaylistContext"
 
-const wrapRootElement = ({element}) => (
+const wrapPageElement = ({element}) => (
     <PlaylistProvider>
         <CartProvider>
             <Playlist/>     
@@ -18,4 +18,4 @@ const wrapRootElement = ({element}) => (
     </PlaylistProvider>
 );
 
-export { wrapRootElement };
+export { wrapPageElement };
