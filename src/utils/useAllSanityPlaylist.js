@@ -4,7 +4,7 @@ const useAllSanityPlaylist = () => {
   const { allSanityPlaylist } = useStaticQuery(
     graphql`
       query {
-        allSanityPlaylist {
+        allSanityPlaylist(sort: {order: ASC, fields: name}) {
           nodes {
             name
             image {
