@@ -21,25 +21,43 @@
 #playlist-grid {
 
     .playlist-card {
-        .playlist-card-cover {
-            position: relative;
 
-            .cover-overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
+        .playlist-card-body {
 
-                width: 100%;
-                height: -webkit-fill-available;
-                background-color: black;
-                opacity: 0;
-                transition-duration: 0.25s;
-
-                &:hover {
-                    opacity: 0.25;
-                }
+            margin: 8px 0;
+            
+            .name, .description {
+                border: 1px solid black;
+                padding: 5px;
             }
 
+            .name {
+                display: grid;
+                place-items: center;
+                border-bottom: none;
+            }
+
+            .description {
+                border-bottom: none;            
+            }
+
+            .controls {
+                display: flex;
+                justify-content: space-between; 
+                align-items: center;
+
+                p, a {
+                    height: 24px;
+                    padding: 5px;
+                    border: 1px solid black;
+                    flex: 0 0 calc(50% - 12px);
+                    text-align: center;
+                }
+
+                a {
+                    border-right: none
+                }
+            }   
         }
     }
 

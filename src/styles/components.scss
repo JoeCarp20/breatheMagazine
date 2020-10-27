@@ -73,7 +73,7 @@ nav + div {
 .playlist {
 
     $header-height: 34px;
-    $playlist-width: 400px;
+    $playlist-width: 300px;
     $playlist-height: 400px;
 
     width: $playlist-width;
@@ -83,7 +83,7 @@ nav + div {
     position: fixed;
     bottom: $header-height;
     right: 0;
-    background-color: $background-accent;
+    background-color: $foreground;
     z-index: +1;
 
     &.hidden {
@@ -92,6 +92,10 @@ nav + div {
 
     &.collapsed {
         transform: translateY(100%);
+
+        .header svg {
+            transform: rotate(180deg);
+        }
     }
 
     .loading-indicator {
@@ -113,6 +117,10 @@ nav + div {
         display: flex;
         align-items: center;
         margin: 0 13px;
+
+        svg {
+            fill: white !important;
+        }
     }
 
     iframe {
