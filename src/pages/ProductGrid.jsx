@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 // components
-import Image from 'gatsby-image';
-import { handleCheckout } from '../utils/stripe';
+import Cart from './Cart';
 
 // utils
 import useAllStripePrice from '../utils/useAllStripePrice';
@@ -13,8 +12,8 @@ import notify, { notifyTypes } from '../utils/notify';
 const ProductGrid = ({path}) => {
 
     const allStripePrice = useAllStripePrice();
-    const { getCart, clearCart, loadCart, removeItem, addItem, incrementItem } = useContext(CartContext);
-
+    const { clearCart, loadCart, addItem } = useContext(CartContext);
+    const [selectedItem, setSelectedItem] = useState(null)
 
     useEffect(() => {
         if (path === '/success/') return handleSuccess();
@@ -34,8 +33,6 @@ const ProductGrid = ({path}) => {
         const cart = JSON.parse( localStorage.getItem('cart') );
         localStorage.clear();
 
-        console.log(cart)
-
         // if there are items in the cart, reload cart
         if (cart && cart.length) { 
             loadCart(cart)
@@ -43,59 +40,81 @@ const ProductGrid = ({path}) => {
         }
 
     }
-
-    const checkout = () => {
-
-        let cart = getCart();
-        if (!cart.length) return console.log('no items in cart');
-
-        // save the cart into local storage for after redirect
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-
-        let lineItems = cart.map( item => ({
-            price: item.id,
-            quantity: item.quantity
-        }))
-
-        handleCheckout(lineItems).then(error => {
-            notify(`Oops! Looks like we're experiencing an error.`, notifyTypes.ERROR);
-        })
-    }
     
     return (
-        <div>
+        <div id={'product-grid'}>
 
-            <button onClick={checkout}>CHECK OUT</button>
+            { selectedItem && 
+                <SelectedItemModal 
+                    item={selectedItem}
+                    exitModal={() => setSelectedItem(null)}    
+                />
+                }
 
-            { getCart().map( (item, index) => {
+            <div className={'grid-4'}>
+                { allStripePrice.map((price, index) => {
 
-                let { id, price, quantity } = item;
+                    console.log(price)
+                    let image = price.product.images[0]
 
-                return (
-                    <div key={index}>
-                        <p>{id} | {price} | {quantity}</p> 
-                        <button onClick={() => removeItem(item)}>remove</button>
-                        <button onClick={() => incrementItem(item, 1)}>+1</button>
-                        <button onClick={() => incrementItem(item, -1)}>-1</button>
-                    </div>
-                )
+                    return (
+                        <div 
+                            key={index}
+                            className={'product-item'}
+                            onClick={() => setSelectedItem(price)}
+                        >
+                            <img src={image} alt=""/>
+                            <p>{price.product.name} | ${price.unit_amount / 100}</p>
+                        </div>
+                    )
+                })}
+            </div>
 
-            } )}
-
-            { allStripePrice.map((price, index) => {
-                return (
-                    <button
-                        key={index}
-                        onClick={() => addItem({id: price.id, price: 100, quantity: 1})}
-                    >
-                        {price.product.name}
-                    </button>
-                )
-            })}
         </div>
     )
 
+}
+
+
+
+const SelectedItemModal = ({item, exitModal}) => {
+
+    const { addItem } = useContext(CartContext);
+    const [quantity, setQuantity] = useState(1);
+
+    let image = item.product.images[0];
+    let name = item.product.name;
+    let description = item.product.description;
+    let price = (item.unit_amount / 100).toFixed(2);
+
+
+    const handleAddItem = () => {
+        addItem({id: item.id, price, quantity})
+        setTimeout(exitModal, 500)
+    }
+
+    return <div className={'selected-item-modal'}>
+
+        <div className={'selected-item-modal-inner'}>
+            <img src={image} alt=""/>
+            <p>{name} | ${price}</p>
+            
+            <div className={'description'}>
+                <p>{description}</p>
+            </div>
+
+            <div className={'quantity-selector'}>
+                <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                <p>{ quantity }</p>
+                <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>-</button>
+            </div>
+
+            <div className={'add-to-cart-button'}>
+                <button onClick={handleAddItem}>Add to Cart</button>
+            </div>
+        </div>
+
+    </div>
 }
 
 export default ProductGrid;

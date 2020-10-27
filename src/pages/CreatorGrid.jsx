@@ -12,13 +12,7 @@ import '../styles/pages.scss'
 
 const CreatorGrid = () => {
 
-    const allSanityCreator = useAllSanityCreator();
-
-    const creators = [
-        ...allSanityCreator, ...allSanityCreator, ...allSanityCreator,
-        ...allSanityCreator, ...allSanityCreator, ...allSanityCreator,
-        ...allSanityCreator, ...allSanityCreator, ...allSanityCreator,
-    ]
+    const creators = useAllSanityCreator();
 
     return (
         <div id={'creator-grid'} className={'grid-4'}>

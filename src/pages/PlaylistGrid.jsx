@@ -11,14 +11,7 @@ import PortableText from '../components/PortableText';
 
 const PlaylistGrid = () => {
     
-    const _playlists = useAllSanityPlaylist();
-
-    const playlistFour = _playlists.find(p => p.name === "Playlist Four")
-    const playlists = [
-        playlistFour, playlistFour, playlistFour, playlistFour, 
-        playlistFour, playlistFour, playlistFour, playlistFour, 
-        playlistFour, playlistFour, playlistFour, playlistFour, 
-    ]
+    const playlists = useAllSanityPlaylist();
 
     return (
         <div id={'playlist-grid'} className={'grid-2'}>

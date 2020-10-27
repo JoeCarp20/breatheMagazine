@@ -26,6 +26,11 @@ exports.createPages = async ({ graphql, actions }) => {
     path: "/cancel/",
     component: require.resolve("./src/pages/ProductGrid.jsx"),
   })
+
+  createPage({
+    path: "/cart/",
+    component: require.resolve("./src/pages/Cart.jsx"),
+  })
   
   const allCreatorSlugs = await graphql(`
     {

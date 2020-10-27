@@ -3,6 +3,8 @@ import React, { useReducer } from 'react';
 // utils
 import { dummyContextFunction } from '../utils/common';
 
+
+
 const cartReducer = (state, action) => {
   switch(action.type) {
         
@@ -33,7 +35,7 @@ const cartReducer = (state, action) => {
         return { ...item, quantity }
       })
 
-      return _state;
+      return _state.filter(item => item.quantity > 0);
       
       case 'CLEAR':
         return [];
