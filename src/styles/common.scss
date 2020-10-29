@@ -38,8 +38,8 @@ $accent-accent: white;
 
     // default font style
     font-family: 'Courier New', Courier, monospace;
-    font-size: 21px;
-    line-height: 26px;
+    font-size: 16px;
+    line-height: 21px;
     color: $foreground;
     font-weight: 200;
 
@@ -122,11 +122,6 @@ img { width: 100%; }
 }
 
 @media screen and (max-width: $size-tablet) {
-
-    * {
-        font-size: 16px;
-        line-height: 21px;
-    }
 
     h1 {
         font-size: 89px;

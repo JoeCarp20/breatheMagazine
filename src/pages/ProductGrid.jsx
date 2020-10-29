@@ -52,7 +52,7 @@ const ProductGrid = ({path}) => {
                 }
 
             <div className={'grid-4'}>
-                { allStripePrice.map((price, index) => {
+                { [...allStripePrice, ...allStripePrice, ...allStripePrice].map((price, index) => {
 
                     console.log(price)
                     let image = price.product.images[0]
@@ -95,11 +95,21 @@ const SelectedItemModal = ({item, exitModal}) => {
 
     return <div className={'selected-item-modal'}>
 
+
         <div className={'selected-item-modal-inner'}>
+
+            <div 
+                className={'modal-exit-button'}
+                onClick={exitModal}    
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </div>
+
             <img src={image} alt=""/>
-            <p>{name} | ${price}</p>
-            
-            <div className={'description'}>
+
+            <div className={'product-information'}>
+                <p>{name}</p>
+                <p>${price}</p>
                 <p>{description}</p>
             </div>
 

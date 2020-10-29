@@ -37,7 +37,7 @@ const CreatorCard = ({slug, name, profileImage}) => {
         <div className={'creator-card'}>
             <Link to={`/creators/${slug}`}>
                 <Image fluid={profileImage}/>
-                <p className={'emph'}>{name}</p>
+                <p>{name}</p>
             </Link>
         </div>
     )

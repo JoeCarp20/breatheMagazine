@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 // components
-import Image from 'gatsby-image';
 import { handleCheckout } from '../utils/stripe';
 
 // utils
@@ -56,7 +55,6 @@ const Cart = () => {
             }
 
             <div className={'grid-2'}>
-
 
               { cart.map( (item, index) => {
 

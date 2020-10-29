@@ -6,7 +6,6 @@ import PortableText from "../components/PortableText";
 // utils
 import { graphql } from "gatsby";
 import Image from 'gatsby-image';
-import { Link } from 'gatsby';
 
 export const query = graphql`
   query($slug: String!) {
@@ -50,31 +49,47 @@ const Creator = ({data}) => {
     <div className={'creator'}>
 
       <div className={'creator-header'}>
-        <Image fluid={creator.profile_image.asset.fluid}/>
         <div>
           <h3>{creator.name}</h3>
         </div>
+        <Image fluid={creator.profile_image.asset.fluid}/>
       </div>
 
-      <hr/>
-      <PortableText blocks={creator._rawBio}/>
+      <div className={'left'}>
 
-      <hr/>
-      <PortableText blocks={creator._rawQuestionForCreator}/>
+        <section>
+          <p className={'section-title emph'}>Creator Bio</p>
+          <PortableText blocks={creator._rawBio}/>
+        </section>
 
-      <hr/>
-      <div className={'creator-gallery'}>
-        { creator.gallery.map( (galleryImage, index) => {
-          return <Image
-            key={index}
-            fluid={galleryImage.asset.fluid}
-          />
-        })}
+        <section>
+          <p className={'section-title emph'}>Question For Creator: What is one person, place or thing that has had a significant impact on your creative process, artistic taste, or personal life?</p>
+          <PortableText blocks={creator._rawQuestionForCreator}/>
+        </section>
+
+        <section>
+          <p className={'section-title emph'}>Creator Information</p>
+          { creator.external_links.map( (link, index) => <a key={index} href={link.link_url}>{link.link_text}</a> )}
+        </section>
+
       </div>
 
-      <hr/>
-      <div className={'creator-information'}>
-        { creator.external_links.map( (link, index) => <a href={link.link_url}>{link.link_text}</a> )}
+      <div className={'right'}>
+
+        <section className={'creator-gallery'}>
+          <p className={'section-title emph'}>Creator Gallery</p>
+
+          { creator.gallery.map( (galleryImage, index) => {
+            return <div className={'image-wrapper'}>
+              <Image
+                key={index}
+                fluid={galleryImage.asset.fluid}
+              />
+            </div>
+          })}
+
+        </section>
+
       </div>
 
     </div>

@@ -72,9 +72,13 @@
 .creator {
 
     margin: 0 $space / 2;
+    display: flex;
+    flex-wrap: wrap;
 
     .creator-header {
+        flex: 0 0 100%;
         display: flex;
+        border: 1px solid black;
 
         .gatsby-image-wrapper {
             flex: 0 0 calc( 25% - #{ $space / 2 });
@@ -89,19 +93,56 @@
         }
     }
 
-    .creator-gallery {
-        display: flex;
+    .left, .right {
+        height: 90vh;
+        overflow: scroll;
+        flex: 0 0 calc(50% - 55px/2);
 
-        .gatsby-image-wrapper {
-            flex: 0 0 25%;
+        section {
+            border: 1px solid black;
+            margin: 13px 0;
+
+            .section-title {
+                text-align: center;
+                border-bottom: 1px solid black;
+            }
+
+            p {
+                padding: 13px;
+
+                &:not(.section-title):last-child {
+                    padding-bottom: 0;
+                }   
+            }
+
+            a {
+                padding: 13px;
+                border-bottom: 1px solid black;
+
+                &:last-child {
+                    border-bottom: 0;
+                }  
+            }
         }
     }
 
-    .creator-information {
-        a {
-            display: block;
+    .left {
+        margin-right: 55px;
+    }
+
+    .right {
+        .image-wrapper {
+            border-bottom: 1px solid black;
         }
     }
+
+
+
+    // .creator-information {
+    //     a {
+    //         display: block;
+    //     }
+    // }
 }
 
 
@@ -131,13 +172,35 @@
             position: relative;
             background-color: white;
             width: 300px;
-            height: 500px;
+            height: 464px;
             padding-bottom: 50px;
+
+            .modal-exit-button {
+                position: absolute;
+                top: -24px - 13px;
+                left: 0;
+                padding: 8px;
+
+                svg {
+                    fill: white;
+                }
+            }
 
             img {
                 width: 100%;
                 display: block;
                 margin: auto;
+            }
+
+            .product-information {
+                border: 1px solid black;
+                border-bottom: none;
+
+                p {
+                    border-bottom: 1px solid black;
+                    padding: 8px 0;
+                    &:last-child { border-bottom: none; }
+                }
             }
 
             .description {
@@ -146,14 +209,16 @@
             }
 
             .quantity-selector {
-                width: 50%;
-                margin: auto;
+                border: 1px solid black;
                 display: flex;
-                justify-content: space-evenly;
                 align-items: center;
 
+                p, button {
+                    margin: 13px 0;
+                    flex: 0 0 calc(100% / 3);
+                }
+
                 button {
-                    width: 34px;
                     background-color: transparent;
                     border: none;
                     outline: none;
@@ -163,8 +228,9 @@
             .add-to-cart-button {
                 position: absolute;
                 bottom: 0;
-                width: 100%;
+                width: calc(100% - 2px);
                 height: 50px;
+                border: 1px solid black;
 
                 display: grid;
                 place-items: center;
