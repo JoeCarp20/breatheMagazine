@@ -36,13 +36,13 @@ const Nav = () => {
                     <Link to={`/playlists`} className={'emph'}>Playlists</Link>
                 </div>
                 <div className={'nav-item'}>
-                    <Link to={`/concept`} className={'emph'}>Concept</Link>
+                    <Link to={`/zine`} className={'emph'}>Zine</Link>
                 </div>
             </div>
 
             <div className={'row'}>
                 <div className={'subtitle'}>
-                    <p className={'emph'}>"CATCHY PHRASE"</p>
+                    <p className={'emph'}>INHALE. EXHALE.</p>
                 </div>
 
                 <div className={'cart-wrapper'}>

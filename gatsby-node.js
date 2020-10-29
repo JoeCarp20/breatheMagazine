@@ -1,36 +1,22 @@
+const path = require('path');
+
 exports.createPages = async ({ graphql, actions }) => {
 
   const { createPage } = actions;
 
-  createPage({
-    path: "/creators/",
-    component: require.resolve("./src/pages/CreatorGrid.jsx"),
-  })
+  const getPage = (filename) => {
+    return require.resolve( path.join(__dirname, `/src/pageComponents/${filename}`) );
+  }
 
-  createPage({
-    path: "/playlists/",
-    component: require.resolve("./src/pages/PlaylistGrid.jsx"),
-  })
+  createPage({ path: "/", component: getPage("ProductGrid.jsx") })
+  createPage({ path: "/store/", component: getPage("ProductGrid.jsx") })
+  createPage({ path: "/success/", component: getPage("ProductGrid.jsx") })
+  createPage({ path: "/cancel/", component: getPage("ProductGrid.jsx") })
 
-  createPage({
-    path: "/store/",
-    component: require.resolve("./src/pages/ProductGrid.jsx"),
-  })
-
-  createPage({
-    path: "/success/",
-    component: require.resolve("./src/pages/ProductGrid.jsx"),
-  })
-
-  createPage({
-    path: "/cancel/",
-    component: require.resolve("./src/pages/ProductGrid.jsx"),
-  })
-
-  createPage({
-    path: "/cart/",
-    component: require.resolve("./src/pages/Cart.jsx"),
-  })
+  createPage({ path: "/creators/", component: getPage("CreatorGrid.jsx") })
+  createPage({ path: "/playlists/", component: getPage("PlaylistGrid.jsx") })
+  createPage({ path: "/zine/", component: getPage("Zine.jsx") })
+  createPage({ path: "/cart/", component: getPage("Cart.jsx") })
   
   const allCreatorSlugs = await graphql(`
     {
