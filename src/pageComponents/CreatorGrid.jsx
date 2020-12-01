@@ -12,36 +12,31 @@ import '../styles/pages.scss'
 
 const CreatorGrid = () => {
 
-    const creators = useAllSanityCreator();
+  const creators = useAllSanityCreator();
 
-    return (
-        <div id={'creator-grid'} className={'grid-4'}>
+  return (
+    <div id={'creator-grid'} className={'grid-4'}>
 
-            { creators.map( (creator, index) => {
-                return <CreatorCard 
-                    key={index}
-                    slug={creator.slug.current}
-                    name={creator.name}
-                    profileImage={creator.profile_image.asset.fluid}
-                />
-            })}
+      { creators.map( (creator, index) => {
+        return <CreatorCard 
+          key={index}
+          slug={creator.slug.current}
+          name={creator.name}
+          profileImage={creator.profile_image.asset.fluid}
+        />
+      })}
 
-        </div>
-    )
+    </div>
+  );
+};
 
-}
-
-const CreatorCard = ({slug, name, profileImage}) => {
-
-    return (
-        <div className={'creator-card'}>
-            <Link to={`/creators/${slug}`}>
-                <Image fluid={profileImage}/>
-                <p>{name}</p>
-            </Link>
-        </div>
-    )
-
-}
+const CreatorCard = ({slug, name, profileImage}) => (
+  <div className={'creator-card'}>
+    <Link to={`/creators/${slug}`}>
+      <Image fluid={profileImage}/>
+      <p>{name}</p>
+    </Link>
+  </div>
+);
 
 export default CreatorGrid;

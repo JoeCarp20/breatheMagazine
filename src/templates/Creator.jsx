@@ -43,7 +43,6 @@ export const query = graphql`
 const Creator = ({data}) => {
 
   const creator = data.sanityCreator;
-  console.log({creator})
 
   return (
     <div className={'creator'}>
@@ -93,8 +92,7 @@ const Creator = ({data}) => {
       </div>
 
     </div>
-  )
-
-}
+  );
+};
 
 export default Creator;

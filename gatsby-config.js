@@ -1,14 +1,3 @@
-//
-// NOTES:
-// 
-// - env variables: use ".env" file and prefix values with "GATSBY"
-// - when using React context, pass in default value or buld will fail
-//
-
-require("dotenv").config({
-  path: `.env`,
-})
-
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -35,7 +24,8 @@ module.exports = {
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
-        display: `minimal-ui`
+        display: `minimal-ui`,
+        icon: `./data/assets/logo.png`,
       },
     },
     {
@@ -44,14 +34,6 @@ module.exports = {
         projectId: "8lj87n4m",
         dataset: "production"
       }
-    },
-    {
-      resolve: `gatsby-source-stripe`,
-      options: {
-        objects: ["Price"],
-        secretKey: process.env.GATSBY_STRIPE_SECRET_KEY,
-        downloadFiles: false,
-      },
     }
   ],
 }

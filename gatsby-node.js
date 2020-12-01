@@ -8,15 +8,10 @@ exports.createPages = async ({ graphql, actions }) => {
     return require.resolve( path.join(__dirname, `/src/pageComponents/${filename}`) );
   }
 
-  createPage({ path: "/", component: getPage("ProductGrid.jsx") })
-  createPage({ path: "/store/", component: getPage("ProductGrid.jsx") })
-  createPage({ path: "/success/", component: getPage("ProductGrid.jsx") })
-  createPage({ path: "/cancel/", component: getPage("ProductGrid.jsx") })
-
+  createPage({ path: "/", component: getPage("CreatorGrid.jsx") })
   createPage({ path: "/creators/", component: getPage("CreatorGrid.jsx") })
   createPage({ path: "/playlists/", component: getPage("PlaylistGrid.jsx") })
   createPage({ path: "/zine/", component: getPage("Zine.jsx") })
-  createPage({ path: "/cart/", component: getPage("Cart.jsx") })
   
   const allCreatorSlugs = await graphql(`
     {
