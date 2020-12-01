@@ -67,6 +67,58 @@ nav + div {
 }
 
 // --------------------------------------------------
+// PageWrapper.jsx
+// --------------------------------------------------
+
+#page-wrapper {
+    min-height: 100vh;
+}
+
+
+
+// --------------------------------------------------
+// Footer.jsx
+// --------------------------------------------------
+
+#footer {
+    min-height: 30vh;
+    background-color: $foreground-accent;
+    color: $background;
+    display: flex;
+    margin-top: 13px;
+
+    * {
+        color: $background;
+    }
+
+    .footer-column {
+        flex: 0 0 50%;
+        display: grid;
+        place-items: center;
+
+        a {
+            padding: 5px 0;
+        }
+
+        &:first-child {
+            border-right: 1px solid white;
+        }
+    }
+}
+
+@media screen and (max-width: $size-tablet) {
+    #footer {
+        flex-direction: column;
+
+        .footer-column {
+            min-height: 20vh;
+        }
+    }
+}
+
+
+
+// --------------------------------------------------
 // Playlist.jsx
 // --------------------------------------------------
 

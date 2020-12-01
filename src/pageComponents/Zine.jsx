@@ -11,11 +11,14 @@ const Zine = () => {
 
     const zine = useAllZineJson()
 
-    console.log({zine})
-
     return (
-        <div id={'zine'}>
-            { zine.map( ({image}) => <Image fluid={image.childImageSharp.fluid}/>)}
+        <div id={'zine'} className={'grid-2'}>
+            { zine.map( ( {image}, index ) => (
+                <div class={'zine-page'}>
+                    <p className={'page-number bold'}>pg. {index + 1}</p>
+                    <Image fluid={image.childImageSharp.fluid}/>
+                </div>
+            ))}
         </div>
     )
 }

@@ -17,7 +17,7 @@ const CreatorGrid = () => {
   return (
     <div id={'creator-grid'} className={'grid-4'}>
 
-      { [...creators, ...creators, ...creators, ...creators, ...creators, ...creators, ...creators].map( (creator, index) => {
+      { creators.map( (creator, index) => {
         return <CreatorCard 
           key={index}
           slug={creator.slug.current}

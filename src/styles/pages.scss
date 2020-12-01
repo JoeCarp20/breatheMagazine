@@ -150,7 +150,14 @@
 // --------------------------------------------------
 
 #zine {
-    .gatsby-image-wrapper {
-        max-width: 25%;
+
+    .zine-page {
+        border: $border;
+
+        .page-number {
+            border-bottom: $border;
+            padding: 8px;
+        }
     }
+
 }
