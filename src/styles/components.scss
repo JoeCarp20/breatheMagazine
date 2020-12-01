@@ -83,7 +83,7 @@ nav + div {
     position: fixed;
     bottom: $header-height;
     right: 0;
-    background-color: $foreground;
+    background-color: black;;
     z-index: +1;
 
     &.hidden {
@@ -94,7 +94,7 @@ nav + div {
         transform: translateY(100%);
 
         .header svg {
-            transform: rotate(180deg);
+            transform: rotate(0deg);
         }
     }
 
@@ -109,17 +109,24 @@ nav + div {
         
         display: grid;
         place-items: center;
-        background-color: $background-accent;
+        background-color: black;
+
+        p {
+            color: white;
+        }
     }
 
     .header {
         height: 34px;
-        display: flex;
-        align-items: center;
-        margin: 0 13px;
+        width: 100%;
+        text-align: center;
+        background-color: transparent;
+        outline: none;
+        border: none;
 
         svg {
             fill: white !important;
+            transform: rotate(180deg);
         }
     }
 
@@ -131,7 +138,8 @@ nav + div {
         display: block;
 
         width: $playlist-width;
-        height: $playlist-height;
+        min-height: $playlist-height;
+
     }
 }
 

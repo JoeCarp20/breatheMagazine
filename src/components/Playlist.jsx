@@ -41,7 +41,9 @@ const Playlist = () => {
                     allow="encrypted-media"
                     onLoad={() => setLoading(false)}
                     role={'contentinfo'}
-                ></iframe> 
+                >
+                    <p>Cannot play this playlist</p>    
+                </iframe> 
 
             </div>
 

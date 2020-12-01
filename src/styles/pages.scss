@@ -12,7 +12,6 @@
 
         p {
             border-top: $border;
-            font-weight: 900;
             padding: 13px 0;
         }
     }
@@ -28,43 +27,43 @@
 #playlist-grid {
 
     .playlist-card {
+        border: $border;
+
+        .gatsby-image-wrapper {
+            max-height: 30vw;
+        }
 
         .playlist-card-body {
-
-            margin: 8px 0;
             
             .name, .description {
-                border: 1px solid black;
-                padding: 5px;
+                border-top: $border;
+                padding: 13px;
             }
 
             .name {
                 display: grid;
                 place-items: center;
                 border-bottom: none;
+
+                * {
+                    display: inline-block
+                }
             }
 
             .description {
-                border-bottom: none;            
+                border-bottom: none;     
             }
 
-            .controls {
-                display: flex;
-                justify-content: space-between; 
-                align-items: center;
+            .play-button {
+                border: none;
+                border-top: $border;
+                padding: 13px;
+                text-align: center;
 
-                p, a {
-                    height: 24px;
-                    padding: 5px;
-                    border: 1px solid black;
-                    flex: 0 0 calc(50% - 12px);
-                    text-align: center;
-                }
-
-                a {
-                    border-right: none
-                }
-            }   
+                width: 100%;
+                background-color: transparent;
+                outline: none;
+            }  
         }
     }
 
