@@ -8,6 +8,13 @@
 
     .creator-card {
         text-align: center;
+        border: $border;
+
+        p {
+            border-top: $border;
+            font-weight: 900;
+            padding: 13px 0;
+        }
     }
 
 }
