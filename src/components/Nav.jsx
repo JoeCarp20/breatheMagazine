@@ -11,14 +11,6 @@ const Nav = () => (
 
     <div className={'row'}>
       <div className={'nav-item'}>
-        <a 
-          href={`https://breathe-mag.myshopify.com/`} 
-          className={'emph'} 
-          target={'_blank'} 
-          rel="noreferrer"
-        >Store</a>
-      </div>
-      <div className={'nav-item'}>
         <Link to={`/creators`} className={'emph'}>Creators</Link>
       </div>
       <div className={'nav-item'}>
@@ -26,6 +18,14 @@ const Nav = () => (
       </div>
       <div className={'nav-item'}>
         <Link to={`/zine`} className={'emph'}>Zine</Link>
+      </div>
+      <div className={'nav-item'}>
+        <a 
+          href={`https://breathe-mag.myshopify.com/`} 
+          className={'emph'} 
+          target={'_blank'} 
+          rel="noreferrer"
+        >Store</a>
       </div>
     </div>
 
