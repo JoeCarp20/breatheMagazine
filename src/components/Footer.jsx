@@ -8,7 +8,7 @@ const Footer = () => (
         <div className={'footer-column'}>
             <span>
                 <a className={'bold'} href="https://www.patreon.com/BreatheMagazine">Support us on Patreon</a>
-                <a className={'bold'} href="https://www.instagram.com/breathe.magazine/" target={'_blank'}>Follow us on Instagram</a>
+                <a className={'bold'} href="https://www.instagram.com/breathe.magazine/" target={'_blank'} rel={'noreferrer'}>Follow us on Instagram</a>
             </span>
         </div>
 
