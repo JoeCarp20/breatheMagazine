@@ -1,12 +1,12 @@
 const path = require('path');
 
+const getPage = (filename) => {
+  return require.resolve( path.join(__dirname, `/src/pageComponents/${filename}`) );
+}
+
 exports.createPages = async ({ graphql, actions }) => {
 
   const { createPage } = actions;
-
-  const getPage = (filename) => {
-    return require.resolve( path.join(__dirname, `/src/pageComponents/${filename}`) );
-  }
 
   createPage({ path: "/", component: getPage("CreatorGrid.jsx") })
   createPage({ path: "/creators/", component: getPage("CreatorGrid.jsx") })
@@ -17,6 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
     {
       allSanityCreator {
         nodes {
+          id
           slug {
             current
           }
@@ -25,11 +26,15 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  allCreatorSlugs.data.allSanityCreator.nodes.forEach( ({slug}) => {
+  allCreatorSlugs.data.allSanityCreator.nodes.forEach( node => {
+
+    const {id, slug} = node;
+
     createPage({
       path: `/creators/${slug.current}/`,
       component: require.resolve("./src/templates/Creator.jsx"),
       context: {
+        id,
         slug: slug.current,
       },
     })

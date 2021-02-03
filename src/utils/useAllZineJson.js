@@ -6,13 +6,7 @@ const useAllZineJson = () => {
       query {
         allZineJson {
           nodes {
-            image {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
+            ...ZineFragment
           }
         }
       }

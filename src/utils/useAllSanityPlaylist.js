@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import { useStaticQuery } from 'gatsby';
 
 const useAllSanityPlaylist = () => {
   const { allSanityPlaylist } = useStaticQuery(
@@ -6,28 +6,13 @@ const useAllSanityPlaylist = () => {
       query {
         allSanityPlaylist(sort: {order: ASC, fields: name}) {
           nodes {
-            name
-            image {
-              asset {
-                fluid {
-                  ...GatsbySanityImageFluid
-                }
-              }
-            }
-            _rawDescription
-            spotify_id
-            creator {
-              name
-              slug {
-                current
-              }
-            }
+            ...PlaylistFragment
           }
         }
       }
     `
-  )
-
+  );
+  
   return allSanityPlaylist.nodes;
 }
 

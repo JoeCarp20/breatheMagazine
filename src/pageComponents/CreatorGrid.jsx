@@ -33,7 +33,7 @@ const CreatorGrid = () => {
 const CreatorCard = ({slug, name, profileImage}) => (
   <div className={'creator-card'}>
     <Link to={`/creators/${slug}`}>
-      <Image fluid={profileImage}/>
+      <Image fluid={{...profileImage, aspectRatio: 1/1}}/>
       <p className={'bold'}>{name}</p>
     </Link>
   </div>

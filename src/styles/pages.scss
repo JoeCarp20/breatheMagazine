@@ -25,48 +25,9 @@
 // --------------------------------------------------
 
 #playlist-grid {
-
     .playlist-card {
         border: $border;
-
-        .gatsby-image-wrapper {
-            max-height: 30vw;
-        }
-
-        .playlist-card-body {
-            
-            .name, .description {
-                border-top: $border;
-                padding: 13px;
-            }
-
-            .name {
-                display: grid;
-                place-items: center;
-                border-bottom: none;
-
-                * {
-                    display: inline-block
-                }
-            }
-
-            .description {
-                border-bottom: none;     
-            }
-
-            .play-button {
-                border: none;
-                border-top: $border;
-                padding: 13px;
-                text-align: center;
-
-                width: 100%;
-                background-color: transparent;
-                outline: none;
-            }  
-        }
     }
-
 }
 
 
@@ -76,18 +37,19 @@
 // --------------------------------------------------
 
 .creator {
-
     margin: 0 $space / 2;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space;
 
     .creator-header {
-        flex: 0 0 100%;
         display: flex;
         border: 1px solid black;
+        grid-column: span 2;
 
         .gatsby-image-wrapper {
             flex: 0 0 calc( 25% - #{ $space / 2 });
+            border-left: 1px solid black;
         }
 
         div {
@@ -99,14 +61,30 @@
         }
     }
 
+    .scroll-helper {
+        grid-column: span 2;
+        height: 68px;
+        display: flex;
+        align-items: center;
+
+        button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+
+            svg {
+                pointer-events: none;
+            }
+        }
+    }
+
     .left, .right {
-        height: 90vh;
+        height: calc(100vh - 82px);
         overflow: scroll;
-        flex: 0 0 calc(50% - 55px/2);
 
         section {
             border: 1px solid black;
-            margin: 13px 0;
+            margin-bottom: 13px;
 
             .section-title {
                 text-align: center;
@@ -132,13 +110,23 @@
         }
     }
 
-    .left {
-        margin-right: 55px;
-    }
-
     .right {
         .image-wrapper {
             border-bottom: 1px solid black;
+        }
+    }
+}
+
+@media screen and (max-width: $size-tablet) {
+    .creator {
+        grid-template-columns: repeat(1, 1fr);
+        
+        .creator-header {
+            grid-column: span 1;
+        }
+    
+        .left, .right {
+            height: fit-content;
         }
     }
 }
@@ -150,7 +138,6 @@
 // --------------------------------------------------
 
 #zine {
-
     .zine-page {
         border: $border;
 
@@ -159,5 +146,10 @@
             padding: 8px;
         }
     }
+}
 
+@media screen and (max-width: $size-mobile) {
+    .zine-page {
+        margin-bottom: 12px;
+    }
 }

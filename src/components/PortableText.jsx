@@ -12,7 +12,7 @@ const serializers = {
 }
 
 const PortableText = ({blocks}) => (
-  <BasePortableText blocks={blocks} serializers={serializers} />
+  <BasePortableText blocks={blocks} serializers={serializers} className={'portable-text'}/>
 );
 
 export default PortableText;
