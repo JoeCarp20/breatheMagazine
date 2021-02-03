@@ -124,6 +124,10 @@
         .creator-header {
             grid-column: span 1;
         }
+
+        .scroll-helper {
+            display: none;
+        }
     
         .left, .right {
             height: fit-content;
