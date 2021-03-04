@@ -52,7 +52,6 @@ export const query = graphql`
 const Creator = ({data}) => {
 
   const {sanityCreator, allSanityPlaylist} = data;
-  const {origin, pathname} = window.location;
 
   const handleScrollHelperClick = (e) => {
     window.scrollTo({
